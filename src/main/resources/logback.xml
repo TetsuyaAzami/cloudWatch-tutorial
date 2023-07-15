@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <appender name="CLOUDWATCH" class="com.j256.cloudwatchlogbackappender.CloudWatchAppender">
+        <region>ap-northeast-1</region>
+        <logGroup>cloudWatch</logGroup>
+        <logStream>cloudWatch</logStream>
+        <layout>
+            <pattern>${FORMAT}</pattern>
+        </layout>
+        <maxBatchSize>32</maxBatchSize>
+    </appender>
+    <appender name="CLOUDWATCH2" class="com.j256.cloudwatchlogbackappender.CloudWatchAppender">
+        <region>ap-northeast-1</region>
+        <logGroup>cloudWatch2</logGroup>
+        <logStream>cloudWatch2</logStream>
+        <layout>
+            <pattern>${FORMAT}</pattern>
+        </layout>
+        <maxBatchSize>32</maxBatchSize>
+    </appender>
+    <root level="info">
+        <appender-ref ref="CLOUDWATCH" />
+        <appender-ref ref="CLOUDWATCH2" />
+    </root>
+</configuration>
